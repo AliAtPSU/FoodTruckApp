@@ -13,7 +13,7 @@ namespace FoodTruckApp
         {
             InitializeComponent();
 
-            MainPage = new FoodTruckApp.MainPage();
+            MainPage = new FoodTruckApp.MapPage1();
         }
 
         protected override void OnStart()
