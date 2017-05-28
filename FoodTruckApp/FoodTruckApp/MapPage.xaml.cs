@@ -12,30 +12,31 @@ namespace FoodTruckApp
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MapPage1 : ContentPage
+    public partial class MapPage : ContentPage
     {
         Geocoder geoCoder;
 
-        public MapPage1()
+        public MapPage()
         {
 
             InitializeComponent();
             geoCoder = new Geocoder();
         }
 
-        private async void OnAddPinClicked(object sender, EventArgs e)
+        private async void DisplayPin(List<FoodTruck> foodTrucks)
         {
-            var point = MyMap.VisibleRegion.Center;
-            var item = (await geoCoder.GetAddressesForPositionAsync(point)).FirstOrDefault();
-
-            var name = item ?? "Unknown";
-
-            MyMap.Pins.Add(new Pin
+           
+            MyMap.Pins.Clear();
+            foreach (var truck in foodTrucks)
             {
-                Label = name,
-                Position = point,
-                Type = PinType.Generic
-            });
+                MyMap.Pins.Add(new Pin
+                {
+                    Label = truck.Name,
+                    Position = new Position(truck.Latitude, truck.Longitude),
+                    Type = PinType.SearchResult
+                });
+            }
+
         }
 
         private void OnStreetClicked(object sender, EventArgs e) =>

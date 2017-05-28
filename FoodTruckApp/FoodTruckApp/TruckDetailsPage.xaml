@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodTruckApp.TruckDetailsPage">
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Image>
+
+            </Image>
+            <Label>Truck Name:</Label>
+            <Label x:Name="TruckName"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="SaveButton" Clicked="SaveButton_Clicked">
+                Save this truck
+            </Button>
+            <Button x:Name="NavigateButton" Clicked="NavigateButton_Clicked">
+                Navigate
+            </Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
