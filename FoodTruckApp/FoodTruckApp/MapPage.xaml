@@ -32,23 +32,12 @@
       x:Name="MyMap"
       IsShowingUser="true"
       MapType="Hybrid"/>
-    <Slider x:Name="SliderZoom" 
+        <Slider x:Name="SliderZoom" 
             Grid.Row="2"
             Grid.ColumnSpan="2"
             Maximum="18.0" 
             Minimum="1.0" 
             Value="1.0"
             ValueChanged="OnSliderChanged" />
-    <StackLayout Grid.Row="3"
-                 Grid.ColumnSpan="2"
-                 Orientation="Horizontal" 
-                 Spacing="10"
-                 Padding="10"
-                 HorizontalOptions="Center">
-      <Button x:Name="ButtonStreet" Text="Street" Clicked="OnStreetClicked"/>
-      <Button x:Name="ButtonHybrid" Text="Hybrid" Clicked="OnHybridClicked"/>
-      <Button x:Name="ButtonSatellite" Text="Satellite" Clicked="OnSatelliteClicked"/>
-      <Button x:Name="ButtonAddPin" Text="Add Pin" Clicked="OnAddPinClicked"/>
-    </StackLayout>
-  </Grid>
+    </Grid>
 </ContentPage>
