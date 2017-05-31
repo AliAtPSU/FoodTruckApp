@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package ="com.xamarin.FoodTruck">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.xamarin.FoodTruck">
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -9,8 +9,7 @@
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<application android:label="FoodTruckApp.Android">
-    <meta-data android:name="com.google.android.maps.v2.API_KEY"
-          android:value="AIzaSyCcT4fiHzulKpsO5CeDXYNCNNg80CNEujA" />
-  </application>
-
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCcT4fiHzulKpsO5CeDXYNCNNg80CNEujA" />
+    <activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:theme="@android:style/Theme.Translucent" />
+	</application>
 </manifest>
