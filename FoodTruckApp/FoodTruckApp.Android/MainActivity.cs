@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Android.Gms.Ads;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -19,11 +19,13 @@ namespace FoodTruckApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+            MobileAds.Initialize(ApplicationContext, "YOUR APP ID HERE FROM AdMob");
             CrashManager.Register(this, "be569339f5274c84a0064669d61abd17");
             MetricsManager.Register(Application, "be569339f5274c84a0064669d61abd17");
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
 
+            
             LoadApplication(new App());
         }
     }

@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Google.MobileAds;
 
 namespace FoodTruckApp.iOS
 {
@@ -24,7 +25,7 @@ namespace FoodTruckApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
+            MobileAds.Configure("Your Publishing App Id");
             return base.FinishedLaunching(app, options);
         }
     }
