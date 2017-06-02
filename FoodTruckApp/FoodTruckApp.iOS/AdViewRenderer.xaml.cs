@@ -9,7 +9,7 @@ using Xamarin.Forms.Platform.iOS;
 
 public class AdViewRenderer : ViewRenderer<FoodTruckApp.AdViewForms, BannerView>
 {
-    string bannerId = "Your Ad Unit Id";
+    string bannerId = "ca-app-pub-4283383002881125/1069808092";
     BannerView adView;
     BannerView CreateNativeControl()
     {

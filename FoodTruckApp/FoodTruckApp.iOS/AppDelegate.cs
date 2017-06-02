@@ -25,7 +25,7 @@ namespace FoodTruckApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-            MobileAds.Configure("Your Publishing App Id");
+            MobileAds.Configure("ca-app-pub-4283383002881125~8593074890");
             return base.FinishedLaunching(app, options);
         }
     }
