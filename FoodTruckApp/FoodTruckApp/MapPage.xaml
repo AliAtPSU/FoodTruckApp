@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:MeetupManager.Controls;assembly=MeetupManager"
+             xmlns:controls="clr-namespace:FoodTruckApp;assembly=FoodTruckApp"
              x:Class="FoodTruckApp.MapPage"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              Title="MapPage">
@@ -47,7 +47,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <ListView Grid.Row="0"/>
-            <controls:AdView Grid.Row="1"/>
+            <controls:AdViewForms Grid.Row="1"/>
         </Grid>
 
     </Grid>
