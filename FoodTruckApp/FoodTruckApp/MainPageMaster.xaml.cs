@@ -15,42 +15,33 @@ namespace FoodTruckApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPageMaster : ContentPage
     {
-        public ListView ListView;
+        public ListView ListView { get { return MenuItemsListView; } }
 
         public MainPageMaster()
         {
             InitializeComponent();
 
-            BindingContext = new MainPageMasterViewModel();
-            ListView = MenuItemsListView;
-        }
-
-        class MainPageMasterViewModel : INotifyPropertyChanged
-        {
-            public ObservableCollection<MainPageMenuItem> MenuItems { get; set; }
-
-            public MainPageMasterViewModel()
+            var masterPageItems = new List<MainPageMenuItem>();
+            masterPageItems.Add(new MainPageMenuItem
             {
-                MenuItems = new ObservableCollection<MainPageMenuItem>(new[]
-                {
-                    new MainPageMenuItem { Id = 0, Title = "Page 1" },
-                    new MainPageMenuItem { Id = 1, Title = "Page 2" },
-                    new MainPageMenuItem { Id = 2, Title = "Page 3" },
-                    new MainPageMenuItem { Id = 3, Title = "Page 4" },
-                    new MainPageMenuItem { Id = 4, Title = "Page 5" },
-                });
-            }
-
-            #region INotifyPropertyChanged Implementation
-            public event PropertyChangedEventHandler PropertyChanged;
-            void OnPropertyChanged([CallerMemberName] string propertyName = "")
+                Title = "Map",
+               // IconSource = "contacts.png",
+                TargetType = typeof(MapPage)
+            });
+            masterPageItems.Add(new MainPageMenuItem
             {
-                if (PropertyChanged == null)
-                    return;
+                Title = "Settings",
+     //           IconSource = "todo.png",
+      //          TargetType = typeof(MainPageMenuItem)
+            });
+            masterPageItems.Add(new MainPageMenuItem
+            {
+                Title = "Dashboard",
+//                IconSource = "reminders.png",
+//                TargetType = typeof(MainPageMenuItem)
+            });
 
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-            #endregion
+            MenuItemsListView.ItemsSource = masterPageItems;
         }
     }
 }

@@ -4,7 +4,7 @@
              x:Class="FoodTruckApp.MainPage"
              xmlns:pages="clr-namespace:FoodTruckApp">
   <MasterDetailPage.Master>
-    <pages:MasterDetailPageMaster x:Name="MasterPage" />
+    <pages:MainPageMaster x:Name="MasterPage" />
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
     <NavigationPage>
