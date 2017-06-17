@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodTruckApp.MapPage"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:local="clr-namespace:FoodTruckApp"
              Title="MapPage">
   <Grid>
     <Grid.ColumnDefinitions>
@@ -26,7 +27,7 @@
       x:Name="ButtonGoTo" 
       Clicked="OnGoToClicked"
       Margin="10"/>
-    <maps:Map 
+    <local:CustomMap 
       Grid.ColumnSpan="2"
       Grid.Row="1"
       x:Name="MyMap"

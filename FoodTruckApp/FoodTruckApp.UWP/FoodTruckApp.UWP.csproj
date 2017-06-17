@@ -96,6 +96,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomMapRenderer.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -153,7 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FoodTruckApp\FoodTruckApp.csproj">
-      <Project>{aa733407-9a18-45ac-9204-6de321ca0286}</Project>
+      <Project>{44c7c6ad-0607-4c12-8e6d-1a4ac310e4eb}</Project>
       <Name>FoodTruckApp</Name>
     </ProjectReference>
   </ItemGroup>
