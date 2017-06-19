@@ -17,21 +17,22 @@ using Android.Gms.Maps;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Platform.Android;
 using Android.Gms.Maps.Model;
+using System.ComponentModel;
 
 [assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
 namespace FoodTruckApp.Droid
 {
-    public class CustomMapRenderer:MapRenderer, GoogleMap.IInfoWindowAdapter,IOnMapReadyCallback
+    public class CustomMapRenderer : MapRenderer, GoogleMap.IInfoWindowAdapter, IOnMapReadyCallback
     {
         GoogleMap map;
         List<CustomPin> customPins;
-        bool isDrawn;
+        //bool isDrawn;
 
         protected override void OnElementChanged(ElementChangedEventArgs<Map> e)
         {
             base.OnElementChanged(e);
 
-            if (e.OldElement!=null)
+            if (e.OldElement != null)
             {
                 map.InfoWindowClick -= OnInfoWindowClick;
             }
@@ -45,11 +46,68 @@ namespace FoodTruckApp.Droid
         }
         public void OnMapReady(GoogleMap googleMap)
         {
+            InvokeOnMapReadyBaseClassHack(googleMap);
             map = googleMap;
             map.InfoWindowClick += OnInfoWindowClick;
             map.SetInfoWindowAdapter(this);
-                
+
         }
+
+        private void InvokeOnMapReadyBaseClassHack(GoogleMap googleMap)
+        {
+            System.Reflection.MethodInfo onMapReadyMethodInfo = null;
+
+            Type baseType = typeof(MapRenderer);
+            foreach (var currentMethod in baseType.GetMethods(System.Reflection.BindingFlags.NonPublic |
+                                                             System.Reflection.BindingFlags.Instance |
+                                                              System.Reflection.BindingFlags.DeclaredOnly))
+            {
+
+                if (currentMethod.IsFinal && currentMethod.IsPrivate)
+                {
+                    if (string.Equals(currentMethod.Name, "OnMapReady", StringComparison.Ordinal))
+                    {
+                        onMapReadyMethodInfo = currentMethod;
+
+                        break;
+                    }
+
+                    if (currentMethod.Name.EndsWith(".OnMapReady", StringComparison.Ordinal))
+                    {
+                        onMapReadyMethodInfo = currentMethod;
+
+                        break;
+                    }
+                }
+            }
+
+            if (onMapReadyMethodInfo != null)
+            {
+                onMapReadyMethodInfo.Invoke(this, new[] { googleMap });
+            }
+        }
+
+        //protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        //{
+        //    base.OnElementPropertyChanged(sender, e);
+
+        //    if (e.PropertyName.Equals("VisibleRegion") && !isDrawn)
+        //    {
+        //        map.Clear();
+
+        //        foreach (var pin in customPins)
+        //        {
+        //            var marker = new MarkerOptions();
+        //            marker.SetPosition(new LatLng(pin.Pin.Position.Latitude, pin.Pin.Position.Longitude));
+        //            marker.SetTitle(pin.Pin.Label);
+        //            marker.SetSnippet(pin.Pin.Address);
+        //            marker.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.pin));
+
+        //            map.AddMarker(marker);
+        //        }
+        //        isDrawn = true;
+        //    }
+        //}
 
         private void OnInfoWindowClick(object sender, GoogleMap.InfoWindowClickEventArgs e)
         {
@@ -58,7 +116,7 @@ namespace FoodTruckApp.Droid
             {
                 throw new Exception("Custom pin not found");
             }
-            
+
             if (!string.IsNullOrWhiteSpace(customPin.Url))
             {
                 var url = Android.Net.Uri.Parse(customPin.Url);
@@ -71,28 +129,21 @@ namespace FoodTruckApp.Droid
         public Android.Views.View GetInfoContents(Marker marker)
         {
             var inflater = Android.App.Application.Context.GetSystemService(Context.LayoutInflaterService) as Android.Views.LayoutInflater;
-            if (inflater!=null)
+            if (inflater != null)
             {
                 Android.Views.View view;
-               var customPin = GetCustomPin(marker);
-                if (customPin!=null)
+                var customPin = GetCustomPin(marker);
+                if (customPin == null)
                 {
                     throw new Exception("Custom Pin not found");
                 }
+                view = inflater.Inflate(Resource.Layout.MapInfoWindow, null);
 
-                if (customPin.Id == "Xamarin")
-                {
-                    view = inflater.Inflate(Resource.Layout.XamarinMapInfoWindow, null);
-                }
-                else
-                {
-                    view = inflater.Inflate(Resource.Layout.MapInfoWindow, null);
-                }
 
                 var infoTitle = view.FindViewById<TextView>(Resource.Id.InfoWindowTitle);
                 var infoSubtitle = view.FindViewById<TextView>(Resource.Id.InfoWindowSubtitle);
 
-                if (infoTitle!=null)
+                if (infoTitle != null)
                 {
                     infoTitle.Text = marker.Title;
                 }

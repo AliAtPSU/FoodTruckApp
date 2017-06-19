@@ -17,7 +17,6 @@
       <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
     <Entry 
-      Text="Seattle,WA"
       Placeholder="Enter location"
       x:Name="EntryLocation"
       Margin="10"/>
@@ -40,5 +39,7 @@
             Minimum="1.0" 
             Value="1.0"
             ValueChanged="OnSliderChanged" />
+      
     </Grid>
+
 </ContentPage>
