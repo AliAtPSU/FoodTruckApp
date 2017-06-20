@@ -8,7 +8,10 @@
 
             </Image>
             <Label>Truck Name:</Label>
-            <Label x:Name="TruckName"/>
+            <Label x:Name="Name"/>
+            <Label>Description:</Label>
+            <Label x:Name="Description"/>
+            
         </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Button x:Name="SaveButton" Clicked="SaveButton_Clicked">

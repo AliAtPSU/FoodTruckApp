@@ -12,12 +12,13 @@ namespace FoodTruckApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TruckDetailsPage : ContentPage
     {
-        FoodTruck foodTruckToDisplay;
+//        FoodTruck foodTruckToDisplay;
         MapPage mapPage;
         public TruckDetailsPage(FoodTruck truckToDisplay,MapPage previousPage)
         {
             InitializeComponent();
-            foodTruckToDisplay = truckToDisplay;
+            Name.Text = truckToDisplay.Name;
+            Description.Text = truckToDisplay.Description;
             mapPage = previousPage;
             
         }
