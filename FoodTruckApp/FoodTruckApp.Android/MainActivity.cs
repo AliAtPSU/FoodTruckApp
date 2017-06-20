@@ -8,6 +8,9 @@ using Android.Widget;
 using Android.OS;
 using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
+using System.Threading.Tasks;
+using Microsoft.WindowsAzure.MobileServices;
+
 namespace FoodTruckApp.Droid
 {
     [Activity(Label = "FoodTruckApp", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]

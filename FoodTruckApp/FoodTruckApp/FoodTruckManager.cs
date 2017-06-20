@@ -18,7 +18,7 @@ namespace FoodTruckApp
         IMobileServiceSyncTable<TodoItem> todoTable;
 
 #else
-            IMobileServiceTable<TodoItem> todoTable;
+            IMobileServiceTable<FoodTruck> todoTable;
 #endif
 
             private FoodTruckManager()
@@ -35,7 +35,7 @@ namespace FoodTruckApp
 
             this.todoTable = client.GetSyncTable<TodoItem>();
 #else
-                this.todoTable = client.GetTable<TodoItem>();
+                this.todoTable = client.GetTable<FoodTruck>();
 #endif
             }
 
@@ -58,10 +58,10 @@ namespace FoodTruckApp
 
             public bool IsOfflineEnabled
             {
-                get { return todoTable is Microsoft.WindowsAzure.MobileServices.Sync.IMobileServiceSyncTable<TodoItem>; }
+                get { return todoTable is Microsoft.WindowsAzure.MobileServices.Sync.IMobileServiceSyncTable<FoodTruck>; }
             }
 
-            public async Task<ObservableCollection<TodoItem>> GetTodoItemsAsync(bool syncItems = false)
+            public async Task<ObservableCollection<FoodTruck>> GetTodoItemsAsync(bool syncItems = false)
             {
                 try
                 {
@@ -71,11 +71,11 @@ namespace FoodTruckApp
                     await this.SyncAsync();
                 }
 #endif
-                    IEnumerable<TodoItem> items = await todoTable
+                    IEnumerable<FoodTruck> items = await todoTable
                         .Where(todoItem => !todoItem.Done)
                         .ToEnumerableAsync();
 
-                    return new ObservableCollection<TodoItem>(items);
+                    return new ObservableCollection<FoodTruck>(items);
                 }
                 catch (MobileServiceInvalidOperationException msioe)
                 {
@@ -88,7 +88,7 @@ namespace FoodTruckApp
                 return null;
             }
 
-            public async Task SaveTaskAsync(TodoItem item)
+            public async Task SaveTaskAsync(FoodTruck item)
             {
                 if (item.Id == null)
                 {
