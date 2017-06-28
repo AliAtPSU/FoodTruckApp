@@ -13,6 +13,9 @@
                 <Label Text="Password:" />
                 <Entry x:Name="password" IsPassword="True"/>
             </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="messageLabel" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

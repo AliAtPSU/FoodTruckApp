@@ -10,6 +10,10 @@ using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
+using Android.Webkit;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace FoodTruckApp.Droid
 {
@@ -29,6 +33,17 @@ namespace FoodTruckApp.Droid
             Xamarin.FormsMaps.Init(this, bundle);
 
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+            
+            try
+            {                    
+                MobileServiceClient client = new MobileServiceClient(Constants.ApplicationURL);
+                var objectToSend = JsonConvert.SerializeObject(new FoodTruck { Name = "test", Description = "test" });
+                var request = client.InvokeApiAsync("FoodTrucks", objectToSend, HttpMethod.Post, null);
+            }
+            catch (Exception ex)
+            {
+
+            }
             App.Init((IAuthenticate)this);
             LoadApplication(new App());
         }
@@ -41,7 +56,7 @@ namespace FoodTruckApp.Droid
                 if (user == null)
                 {
                     // The authentication provider could also be Facebook, Twitter, or Microsoft
-                    user = await TodoItemManager.DefaultManager.CurrentClient.LoginAsync(this, MobileServiceAuthenticationProvider.Google);
+                    user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(this, MobileServiceAuthenticationProvider.Google);
                     if (user != null)
                     {
                         CreateAndShowDialog(string.Format("You are now logged in - {0}", user.UserId), "Logged in!");
@@ -64,7 +79,7 @@ namespace FoodTruckApp.Droid
                 if (user != null)
                 {
                     CookieManager.Instance.RemoveAllCookie();
-                    await TodoItemManager.DefaultManager.CurrentClient.LogoutAsync();
+                    await FoodTruckManager.DefaultManager.CurrentClient.LogoutAsync();
                     CreateAndShowDialog(string.Format("You are now logged out - {0}", user.UserId), "Logged out!");
                 }
                 user = null;

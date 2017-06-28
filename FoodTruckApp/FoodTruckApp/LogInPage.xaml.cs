@@ -30,7 +30,7 @@ namespace FoodTruckApp
 
                 if (authenticated)
                 {
-                    Navigation.InsertPageBefore(new TodoList(), this);
+                    Navigation.InsertPageBefore(new MapPage(), this);
                     await Navigation.PopAsync();
                 }
             }

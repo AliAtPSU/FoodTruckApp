@@ -8,6 +8,6 @@ namespace FoodTruckApp
 {
     public static class Constants
     {
-        public static string ApplicationURL = @"<INSERT_MOBILE_APP_URL_HERE>";
+        public static string ApplicationURL = @"http://foodtruckali.azurewebsites.net";
     }
 }

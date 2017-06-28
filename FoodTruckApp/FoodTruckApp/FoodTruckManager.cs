@@ -61,44 +61,44 @@ namespace FoodTruckApp
                 get { return todoTable is Microsoft.WindowsAzure.MobileServices.Sync.IMobileServiceSyncTable<FoodTruck>; }
             }
 
-            public async Task<ObservableCollection<FoodTruck>> GetTodoItemsAsync(bool syncItems = false)
+        public async Task<ObservableCollection<FoodTruck>> GetTodoItemsAsync(bool syncItems = false)
+        {
+            try
             {
-                try
-                {
 #if OFFLINE_SYNC_ENABLED
                 if (syncItems)
                 {
                     await this.SyncAsync();
                 }
 #endif
-                    IEnumerable<FoodTruck> items = await todoTable
-                        .Where(todoItem => !todoItem.Done)
-                        .ToEnumerableAsync();
+                IEnumerable<FoodTruck> items = await todoTable
+                    //.Where(todoItem => !todoItem.Done)
+                    .ToEnumerableAsync();
 
-                    return new ObservableCollection<FoodTruck>(items);
-                }
-                catch (MobileServiceInvalidOperationException msioe)
-                {
-                    Debug.WriteLine(@"Invalid sync operation: {0}", msioe.Message);
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine(@"Sync error: {0}", e.Message);
-                }
-                return null;
+                return new ObservableCollection<FoodTruck>(items);
             }
-
-            public async Task SaveTaskAsync(FoodTruck item)
+            catch (MobileServiceInvalidOperationException msioe)
             {
-                if (item.Id == null)
-                {
-                    await todoTable.InsertAsync(item);
-                }
-                else
-                {
-                    await todoTable.UpdateAsync(item);
-                }
+                Debug.WriteLine(@"Invalid sync operation: {0}", msioe.Message);
             }
+            catch (Exception e)
+            {
+                Debug.WriteLine(@"Sync error: {0}", e.Message);
+            }
+            return null;
+        }
+
+        //public async Task SaveTaskAsync(FoodTruck item)
+        //{
+        //    if (item.Id == null)
+        //    {
+        //        await todoTable.InsertAsync(item);
+        //    }
+        //    else
+        //    {
+        //        await todoTable.UpdateAsync(item);
+        //    }
+        //}
 
 #if OFFLINE_SYNC_ENABLED
         public async Task SyncAsync()
@@ -145,5 +145,5 @@ namespace FoodTruckApp
             }
         }
 #endif
-        }
+    }
     }
