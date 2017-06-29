@@ -13,6 +13,16 @@ namespace FoodTruckApp
 
         public App()
         {
+            try
+            {
+                MobileServiceClient client = new MobileServiceClient(Constants.ApplicationURL);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
             
             InitializeComponent();
             
