@@ -43,6 +43,7 @@
       <DependentUpon>FoodTruckRegister.xaml</DependentUpon>
     </Compile>
     <Compile Include="FoodTruck.cs" />
+    <Compile Include="FoodTruckRegisterModel.cs" />
     <Compile Include="MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>

@@ -86,19 +86,17 @@ namespace FoodTruckApp
             JToken request;
             try
             {
-                var item =await FoodTruckManager.DefaultManager.GetTodoItemsAsync();
-            MobileServiceClient client = new MobileServiceClient(Constants.ApplicationURL);
-            var objectToSend = JsonConvert.SerializeObject(new FoodTruck { Name = "test", Description = "test" });
-                request = await client.InvokeApiAsync("FoodTrucks", objectToSend, HttpMethod.Post, null);
+
+            
+                //await FoodTruckManager.DefaultManager.todoTable.InsertAsync(new FoodTruck { Name = "test", Description = "test" });
+                 request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync<FoodTruck,JToken>("FoodTruck", new FoodTruck { Name = "test", Description = "test" },HttpMethod.Post,   null);
             }
             catch (Exception ex)
             {
-                while (ex.GetBaseException() != null)
-                {
-                    ex = ex.GetBaseException();
-                }
-                await DisplayAlert("Error", ex.Message, "cancel");
+
             }
+            System.Diagnostics.Debug.WriteLine("");
+            
         }
 
         private void OnSliderChanged(object sender, ValueChangedEventArgs e)

@@ -18,7 +18,7 @@ namespace FoodTruckApp
         IMobileServiceSyncTable<TodoItem> todoTable;
 
 #else
-            IMobileServiceTable<FoodTruck> todoTable;
+            public IMobileServiceTable<FoodTruck> todoTable;
 #endif
 
             private FoodTruckManager()
@@ -36,6 +36,7 @@ namespace FoodTruckApp
             this.todoTable = client.GetSyncTable<TodoItem>();
 #else
                 this.todoTable = client.GetTable<FoodTruck>();
+            
 #endif
             }
 

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FoodTruckApp
 {
-    public static class Constants
+    public class FoodTruckRegisterModel
     {
-        public static string ApplicationURL = @"https://foodtruckali.azurewebsites.net";
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

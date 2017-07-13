@@ -34,16 +34,7 @@ namespace FoodTruckApp.Droid
 
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             
-            try
-            {                    
-                MobileServiceClient client = new MobileServiceClient(Constants.ApplicationURL);
-                var objectToSend = JsonConvert.SerializeObject(new FoodTruck { Name = "test", Description = "test" });
-                var request = client.InvokeApiAsync("FoodTrucks", objectToSend, HttpMethod.Post, null);
-            }
-            catch (Exception ex)
-            {
 
-            }
             App.Init((IAuthenticate)this);
             LoadApplication(new App());
         }

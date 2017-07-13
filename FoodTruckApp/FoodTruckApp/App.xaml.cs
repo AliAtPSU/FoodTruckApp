@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.Forms;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace FoodTruckApp
 {
@@ -13,8 +15,7 @@ namespace FoodTruckApp
 
         public App()
         {
-            
-            InitializeComponent();
+
             //System.Net.Http.HttpClientHandler s;
             MainPage = new FoodTruckApp.MapPage();
         }
