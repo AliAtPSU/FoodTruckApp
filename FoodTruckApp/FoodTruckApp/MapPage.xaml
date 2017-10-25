@@ -41,13 +41,14 @@
             Value="1.0"
             ValueChanged="OnSliderChanged" />
 
-        <Grid RowSpacing="0">
+        <Grid RowSpacing="0"
+              Grid.Row="3">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <!--<RowDefinition Height="Auto"/>-->
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <ListView Grid.Row="0"/>
-            <controls:AdViewForms Grid.Row="1"/>
+            <!--<ListView Grid.Row="0"/>-->
+            <controls:AdViewForms Grid.Row="0"/>
         </Grid>
 
     </Grid>
