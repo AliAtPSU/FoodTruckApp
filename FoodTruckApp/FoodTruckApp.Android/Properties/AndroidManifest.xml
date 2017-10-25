@@ -11,6 +11,9 @@
 	<application android:label="FoodTruckApp.Android">
     <meta-data android:name="com.google.android.maps.v2.API_KEY"
           android:value="AIzaSyCcT4fiHzulKpsO5CeDXYNCNNg80CNEujA" />
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+    <activity android:name="com.google.android.gms.ads.AdActivity" 
+              android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
   </application>
 
 </manifest>
