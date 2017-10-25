@@ -83,7 +83,13 @@ namespace FoodTruckApp.Droid
 
             if (onMapReadyMethodInfo != null)
             {
-                onMapReadyMethodInfo.Invoke(this, new[] { googleMap });
+                try
+                {
+                    onMapReadyMethodInfo.Invoke(this, new[] { googleMap });
+                }catch(Exception e)
+                {
+                    string error = e.Message;
+                }
             }
         }
 
