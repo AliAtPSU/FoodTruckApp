@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ads;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,6 @@ namespace FoodTruckApp
     public partial class MapPage : ContentPage
     {
         Geocoder geoCoder;
-
         public MapPage()
         {
 
@@ -68,5 +68,6 @@ namespace FoodTruckApp
             var latlongdegrees = 360 / (Math.Pow(2, zoomLevel));
             MyMap.MoveToRegion(new MapSpan(MyMap.VisibleRegion.Center, latlongdegrees, latlongdegrees));
         }
+
     }
 }

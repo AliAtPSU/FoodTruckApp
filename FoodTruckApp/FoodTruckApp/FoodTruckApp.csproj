@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AdBanner.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -49,7 +50,6 @@
     <Compile Include="TruckDetailsPage.xaml.cs">
       <DependentUpon>TruckDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdViewForms.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
