@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:FoodTruckApp;assembly=FoodTruckApp"
              x:Class="FoodTruckApp.MapPage"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             xmlns:local="clr-namespace:FoodTruckApp"
              Title="MapPage">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -40,6 +40,15 @@
             Value="1.0"
             ValueChanged="OnSliderChanged" />
 
-    </Grid>
+        <Grid RowSpacing="0"
+              Grid.Row="3">
+            <Grid.RowDefinitions>
+                <!--<RowDefinition Height="Auto"/>-->
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!--<ListView Grid.Row="0"/>-->
+            <controls:AdViewForms Grid.Row="0"/>
+        </Grid>
 
+    </Grid>
 </ContentPage>
