@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.xamarin.FoodTruck">
-	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="19" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package ="com.xamarin.FoodTruck">
+	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
@@ -8,7 +8,12 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
-	<application android:label="FoodTruckApp.Android" android:icon="@drawable/icon">
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCcT4fiHzulKpsO5CeDXYNCNNg80CNEujA" />
-	</application>
+	<application android:label="FoodTruckApp.Android">
+    <meta-data android:name="com.google.android.maps.v2.API_KEY"
+          android:value="AIzaSyCcT4fiHzulKpsO5CeDXYNCNNg80CNEujA" />
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+    <activity android:name="com.google.android.gms.ads.AdActivity" 
+              android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+  </application>
+
 </manifest>

@@ -64,6 +64,7 @@
     <Compile Include="TruckDetailsPage.xaml.cs">
       <DependentUpon>TruckDetailsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdViewForms.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
