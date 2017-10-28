@@ -4,7 +4,8 @@
              xmlns:controls="clr-namespace:FoodTruckApp;assembly=FoodTruckApp"
              x:Class="FoodTruckApp.MapPage"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             Title="MapPage">
+             Title="MapPage"
+             xmlns:Ad="clr-namespace:Ads;assembly=FoodTruckApp">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -39,16 +40,22 @@
             Minimum="1.0" 
             Value="1.0"
             ValueChanged="OnSliderChanged" />
-
-        <Grid RowSpacing="0"
+        <Ad:AdBanner Size="Standardbanner"
+                     Grid.Row="3"
+                     Grid.ColumnSpan="2"/>
+        <!--<Grid RowSpacing="0"
               Grid.Row="3">
             <Grid.RowDefinitions>
-                <!--<RowDefinition Height="Auto"/>-->
+                -->
+        <!--<RowDefinition Height="Auto"/>-->
+        <!--
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <!--<ListView Grid.Row="0"/>-->
-            <controls:AdViewForms Grid.Row="0"/>
-        </Grid>
+            -->
+        <!--<ListView Grid.Row="0"/>-->
+        <!--
+
+        </Grid>-->
 
     </Grid>
 </ContentPage>

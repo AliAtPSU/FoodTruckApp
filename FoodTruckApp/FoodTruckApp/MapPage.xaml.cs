@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Ads;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,6 @@ namespace FoodTruckApp
     public partial class MapPage : ContentPage
     {
         Geocoder geoCoder;
-
         public MapPage()
         {
 
