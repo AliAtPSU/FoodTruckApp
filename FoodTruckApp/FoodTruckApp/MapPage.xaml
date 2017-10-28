@@ -17,22 +17,19 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Entry 
-      Placeholder="Enter location"
-      x:Name="EntryLocation"
-      Margin="10"/>
-        <Button 
-      Grid.Column="1" 
-      Text="Go To" 
-      x:Name="ButtonGoTo" 
-      Clicked="OnGoToClicked"
-      Margin="10"/>
-        <local:CustomMap 
-      Grid.ColumnSpan="2"
-      Grid.Row="1"
-      x:Name="MyMap"
-      IsShowingUser="true"
-      MapType="Hybrid"/>
+        <Entry Placeholder="Enter location"
+            x:Name="EntryLocation"
+            Margin="10"/>
+        <Button Grid.Column="1" 
+            Text="Go To" 
+            x:Name="ButtonGoTo" 
+            Clicked="OnGoToClicked"
+            Margin="10"/>
+        <controls:CustomMap Grid.ColumnSpan="2"
+            Grid.Row="1"
+            x:Name="MyMap"
+            IsShowingUser="true"
+            MapType="Hybrid"/>
         <Slider x:Name="SliderZoom" 
             Grid.Row="2"
             Grid.ColumnSpan="2"
