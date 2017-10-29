@@ -33,7 +33,7 @@ namespace FoodTruckApp.Droid
             Xamarin.FormsMaps.Init(this, bundle);
 
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
-            
+
 
             App.Init((IAuthenticate)this);
             LoadApplication(new App());
@@ -42,23 +42,27 @@ namespace FoodTruckApp.Droid
         public async Task<bool> AuthenticateAsync()
         {
             bool success = false;
-            try
-            {
-                if (user == null)
-                {
-                    // The authentication provider could also be Facebook, Twitter, or Microsoft
-                    user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(this, MobileServiceAuthenticationProvider.Google);
-                    if (user != null)
-                    {
-                        CreateAndShowDialog(string.Format("You are now logged in - {0}", user.UserId), "Logged in!");
-                    }
-                }
-                success = true;
-            }
-            catch (Exception ex)
-            {
-                CreateAndShowDialog(ex.Message, "Authentication failed");
-            }
+    //        try
+    //        {
+    //            if (user == null)
+    //            {
+                    
+
+
+    //                // The authentication provider could also be Facebook, Twitter, or Microsoft
+    //                user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(MobileServiceAuthenticationProvider.Google,
+    //new JObject().Add("access_token", new Newtonsoft.Json.Linq.JValue()));
+    //                if (user != null)
+    //                {
+    //                    CreateAndShowDialog(string.Format("You are now logged in - {0}", user.UserId), "Logged in!");
+    //                }
+    //            }
+    //            success = true;
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            CreateAndShowDialog(ex.Message, "Authentication failed");
+    //        }
             return success;
         }
 
@@ -89,7 +93,8 @@ namespace FoodTruckApp.Droid
             var builder = new AlertDialog.Builder(this);
             builder.SetMessage(message);
             builder.SetTitle(title);
-            builder.SetNeutralButton("OK", (sender, args) => {
+            builder.SetNeutralButton("OK", (sender, args) =>
+            {
             });
             builder.Create().Show();
         }

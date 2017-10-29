@@ -187,7 +187,7 @@ namespace FoodTruckApp.Droid
             marker.SetPosition(new LatLng(pin.Position.Latitude, pin.Position.Longitude));
             marker.SetTitle(pin.Label);
             marker.SetSnippet(pin.Address);
-            marker.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable))
+            marker.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.foodTruckIcon));
             return base.CreateMarker(pin);
         }
     }
