@@ -2738,7 +2738,7 @@ namespace FoodTruckApp.Droid
 			public const int design_snackbar_background = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int foodTruckIcon = 2130837614;
+			public const int FoodTruck32 = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
 			public const int googleg_disabled_color_18 = 2130837615;
