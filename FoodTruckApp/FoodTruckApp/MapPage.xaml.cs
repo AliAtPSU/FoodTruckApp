@@ -59,6 +59,8 @@ namespace FoodTruckApp
                 });
             }
 
+
+
         }
 
         private void OnStreetClicked(object sender, EventArgs e) =>
@@ -82,20 +84,37 @@ namespace FoodTruckApp
             //var zoomLevel = SliderZoom.Value; // between 1 and 18
             //var latlongdegrees = 360 / (Math.Pow(2, zoomLevel));
             //MyMap.MoveToRegion(new MapSpan(item, latlongdegrees, latlongdegrees));
-
+            FoodTruck[] list;
             JToken request;
             try
             {
 
             
                 //await FoodTruckManager.DefaultManager.todoTable.InsertAsync(new FoodTruck { Name = "test", Description = "test" });
-                 request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync<FoodTruck,JToken>("FoodTruck", new FoodTruck { Name = "test", Description = "test" },HttpMethod.Post,   null);
+                 request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync<FoodTruck,JToken>("FoodTrucks",null,HttpMethod.Get,   null);
+                list = request.ToObject<FoodTruck[]>();
+                var listPins = list.Select<FoodTruck, CustomPin>(f => new CustomPin
+                {
+                    Pin = new Pin
+                    {
+                        Label = f.Name,
+                        Position = new Position(f.Latitude, f.Longitude),
+
+
+                    }
+                });
+                foreach (var pin in listPins)
+                {
+                    MyMap.CustomPins.Add(pin);
+                    MyMap.Pins.Add(pin.Pin);
+                }
             }
             catch (Exception ex)
             {
 
             }
             System.Diagnostics.Debug.WriteLine("");
+
             
         }
 
