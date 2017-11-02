@@ -89,9 +89,9 @@ namespace FoodTruckApp
             try
             {
 
-            
+                FoodTruck test = new FoodTruck() { Name = "testName4", Description = "testDescription4", Latitude = -16.23, Longitude = 42 };
                 //await FoodTruckManager.DefaultManager.todoTable.InsertAsync(new FoodTruck { Name = "test", Description = "test" });
-                 request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync<FoodTruck,JToken>("FoodTrucks",null,HttpMethod.Get,   null);
+                 request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync<FoodTruck,JToken>("FoodTrucks",test,HttpMethod.Post,   null);
                 list = request.ToObject<FoodTruck[]>();
                 var listPins = list.Select<FoodTruck, CustomPin>(f => new CustomPin
                 {

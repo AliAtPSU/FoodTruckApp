@@ -42,27 +42,29 @@ namespace FoodTruckApp.Droid
         public async Task<bool> AuthenticateAsync()
         {
             bool success = false;
-    //        try
-    //        {
-    //            if (user == null)
-    //            {
-                    
+            try
+            {
+                if (user == null)
+                {
 
 
-    //                // The authentication provider could also be Facebook, Twitter, or Microsoft
-    //                user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(MobileServiceAuthenticationProvider.Google,
-    //new JObject().Add("access_token", new Newtonsoft.Json.Linq.JValue()));
-    //                if (user != null)
-    //                {
-    //                    CreateAndShowDialog(string.Format("You are now logged in - {0}", user.UserId), "Logged in!");
-    //                }
-    //            }
-    //            success = true;
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            CreateAndShowDialog(ex.Message, "Authentication failed");
-    //        }
+
+                    // The authentication provider could also be Facebook, Twitter, or Microsoft
+                    user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(MobileServiceAuthenticationProvider.Google,
+    new JObject().Add("AIzaSyCcT4fiHzulKpsO5CeDXYNCNNg80CNEujA", new Newtonsoft.Json.Linq.JValue()));
+                    user = user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(
+    MobileServiceAuthenticationProvider.Google);
+                    if (user != null)
+                    {
+                        CreateAndShowDialog(string.Format("You are now logged in - {0}", user.UserId), "Logged in!");
+                    }
+                }
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                CreateAndShowDialog(ex.Message, "Authentication failed");
+            }
             return success;
         }
 
