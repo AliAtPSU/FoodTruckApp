@@ -25,7 +25,7 @@ namespace FoodTruckApp
 
             InitializeComponent();
             geoCoder = new Geocoder();
-           
+      
             var pin = new CustomPin
             {
                 Pin = new Pin
@@ -84,36 +84,44 @@ namespace FoodTruckApp
             //var zoomLevel = SliderZoom.Value; // between 1 and 18
             //var latlongdegrees = 360 / (Math.Pow(2, zoomLevel));
             //MyMap.MoveToRegion(new MapSpan(item, latlongdegrees, latlongdegrees));
-            FoodTruck[] list;
-            JToken request;
             try
             {
-
-                FoodTruck test = new FoodTruck() { Name = "testName4", Description = "testDescription4", Latitude = -16.23, Longitude = 42 };
-                //await FoodTruckManager.DefaultManager.todoTable.InsertAsync(new FoodTruck { Name = "test", Description = "test" });
-                 request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync<FoodTruck,JToken>("FoodTrucks",test,HttpMethod.Post,   null);
-                list = request.ToObject<FoodTruck[]>();
-                var listPins = list.Select<FoodTruck, CustomPin>(f => new CustomPin
-                {
-                    Pin = new Pin
-                    {
-                        Label = f.Name,
-                        Position = new Position(f.Latitude, f.Longitude),
-
-
-                    }
-                });
-                foreach (var pin in listPins)
-                {
-                    MyMap.CustomPins.Add(pin);
-                    MyMap.Pins.Add(pin.Pin);
-                }
+                Navigation.PushAsync(new LogInPage());
             }
             catch (Exception ex)
             {
-
+                System.Diagnostics.Debug.WriteLine(ex.Message);
             }
-            System.Diagnostics.Debug.WriteLine("");
+            //FoodTruck[] list;
+            //JToken request;
+            //try
+            //{
+
+            //    FoodTruck test = new FoodTruck() { Name = "testName4", Description = "testDescription4", Latitude = -16.23, Longitude = 42 };
+            //    //await FoodTruckManager.DefaultManager.todoTable.InsertAsync(new FoodTruck { Name = "test", Description = "test" });
+            //     request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync<FoodTruck,JToken>("FoodTrucks",test,HttpMethod.Post,   null);
+            //    list = request.ToObject<FoodTruck[]>();
+            //    var listPins = list.Select<FoodTruck, CustomPin>(f => new CustomPin
+            //    {
+            //        Pin = new Pin
+            //        {
+            //            Label = f.Name,
+            //            Position = new Position(f.Latitude, f.Longitude),
+
+
+            //        }
+            //    });
+            //    foreach (var pin in listPins)
+            //    {
+            //        MyMap.CustomPins.Add(pin);
+            //        MyMap.Pins.Add(pin.Pin);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
+            //System.Diagnostics.Debug.WriteLine("");
 
             
         }

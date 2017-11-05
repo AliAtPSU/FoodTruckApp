@@ -50,10 +50,8 @@ namespace FoodTruckApp.Droid
 
 
                     // The authentication provider could also be Facebook, Twitter, or Microsoft
-                    user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(MobileServiceAuthenticationProvider.Google,
-    new JObject().Add("AIzaSyCcT4fiHzulKpsO5CeDXYNCNNg80CNEujA", new Newtonsoft.Json.Linq.JValue()));
-                    user = user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(
-    MobileServiceAuthenticationProvider.Google);
+                    user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(this,MobileServiceAuthenticationProvider.Google, "foodtruck");
+
                     if (user != null)
                     {
                         CreateAndShowDialog(string.Format("You are now logged in - {0}", user.UserId), "Logged in!");

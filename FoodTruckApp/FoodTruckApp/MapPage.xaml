@@ -5,7 +5,8 @@
              x:Class="FoodTruckApp.MapPage"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              Title="MapPage"
-             xmlns:Ad="clr-namespace:Ads;assembly=FoodTruckApp">
+             xmlns:Ad="clr-namespace:Ads;assembly=FoodTruckApp"
+             BackgroundColor="Red">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
