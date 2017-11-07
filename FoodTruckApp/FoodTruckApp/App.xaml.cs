@@ -17,7 +17,7 @@ namespace FoodTruckApp
         {
 
             //System.Net.Http.HttpClientHandler s;
-            MainPage = new FoodTruckApp.MapPage();
+            MainPage = new FoodTruckApp.MainPage();
         }
 
         protected override void OnStart()

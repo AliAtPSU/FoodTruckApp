@@ -15,7 +15,9 @@ namespace FoodTruckApp
         public LogInPage()
         {
             InitializeComponent();
+
         }
+
 
         async void OnLoginButtonClicked(object sender, EventArgs e)
         {

@@ -63,14 +63,7 @@ namespace FoodTruckApp
 
         }
 
-        private void OnStreetClicked(object sender, EventArgs e) =>
-             MyMap.MapType = MapType.Street;
 
-        private void OnHybridClicked(object sender, EventArgs e) =>
-            MyMap.MapType = MapType.Hybrid;
-
-        private void OnSatelliteClicked(object sender, EventArgs e) =>
-            MyMap.MapType = MapType.Satellite;
 
         private async void OnGoToClicked(object sender, EventArgs e)
         {

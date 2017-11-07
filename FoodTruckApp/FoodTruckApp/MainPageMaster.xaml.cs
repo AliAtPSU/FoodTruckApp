@@ -15,33 +15,39 @@ namespace FoodTruckApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPageMaster : ContentPage
     {
-        public ListView ListView { get { return MenuItemsListView; } }
+        public ListView ListView;
 
         public MainPageMaster()
         {
             InitializeComponent();
 
-            var masterPageItems = new List<MainPageMenuItem>();
-            masterPageItems.Add(new MainPageMenuItem
-            {
-                Title = "Map",
-               // IconSource = "contacts.png",
-                TargetType = typeof(MapPage)
-            });
-            masterPageItems.Add(new MainPageMenuItem
-            {
-                Title = "Settings",
-     //           IconSource = "todo.png",
-      //          TargetType = typeof(MainPageMenuItem)
-            });
-            masterPageItems.Add(new MainPageMenuItem
-            {
-                Title = "Dashboard",
-//                IconSource = "reminders.png",
-//                TargetType = typeof(MainPageMenuItem)
-            });
+            BindingContext = new MainPageMasterViewModel();
+            ListView = MenuItemsListView;
+        }
 
-            MenuItemsListView.ItemsSource = masterPageItems;
+        class MainPageMasterViewModel : INotifyPropertyChanged
+        {
+            public ObservableCollection<MainPageMenuItem> MenuItems { get; set; }
+
+            public MainPageMasterViewModel()
+            {
+                MenuItems = new ObservableCollection<MainPageMenuItem>(new[]
+                {
+                    new MainPageMenuItem { Id = 0, Title = "Map", TargetType=typeof(MapPage) },
+                    new MainPageMenuItem {Id = 1, Title="LogIn", TargetType=typeof(LogInPage) }
+                });
+            }
+
+            #region INotifyPropertyChanged Implementation
+            public event PropertyChangedEventHandler PropertyChanged;
+            void OnPropertyChanged([CallerMemberName] string propertyName = "")
+            {
+                if (PropertyChanged == null)
+                    return;
+
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+            #endregion
         }
     }
 }

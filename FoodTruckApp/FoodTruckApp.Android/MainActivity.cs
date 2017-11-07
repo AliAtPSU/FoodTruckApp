@@ -50,7 +50,7 @@ namespace FoodTruckApp.Droid
 
 
                     // The authentication provider could also be Facebook, Twitter, or Microsoft
-                    user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(this,MobileServiceAuthenticationProvider.Google, "foodtruck");
+                    user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(this,MobileServiceAuthenticationProvider.Twitter, "foodtruck");
 
                     if (user != null)
                     {
