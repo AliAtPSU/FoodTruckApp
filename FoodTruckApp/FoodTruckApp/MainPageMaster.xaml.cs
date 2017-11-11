@@ -35,7 +35,9 @@ namespace FoodTruckApp
                 {
                     new MainPageMenuItem { Id = 0, Title = "Map", TargetType=typeof(MapPage) },
                     new MainPageMenuItem {Id = 1, Title="LogIn", TargetType=typeof(LogInPage) }
+                    
                 });
+
             }
 
             #region INotifyPropertyChanged Implementation

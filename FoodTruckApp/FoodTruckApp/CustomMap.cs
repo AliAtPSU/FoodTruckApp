@@ -14,6 +14,13 @@ namespace FoodTruckApp
 
     public class CustomPin
     {
+        private CustomPin() { }
+        public CustomPin(FoodTruck foodTruck)
+        {
+            this.foodTruck = foodTruck;
+        }
+        public FoodTruck foodTruck { get;set; }
+
         public Pin Pin { get; set; }
         public string Id { get; set; }
         public string Url { get; set; }

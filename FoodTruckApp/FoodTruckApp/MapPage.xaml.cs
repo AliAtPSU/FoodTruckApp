@@ -25,8 +25,8 @@ namespace FoodTruckApp
 
             InitializeComponent();
             geoCoder = new Geocoder();
-      
-            var pin = new CustomPin
+            FoodTruck foodTruckToDisplay = new FoodTruck() { Name = "test display", Description = "this is just a text description for food truck to be displayed in a display page." };
+            var pin = new CustomPin(foodTruckToDisplay)
             {
                 Pin = new Pin
                 {
@@ -47,7 +47,7 @@ namespace FoodTruckApp
 
         private async void DisplayPin(List<FoodTruck> foodTrucks)
         {
-           
+
             MyMap.Pins.Clear();
             foreach (var truck in foodTrucks)
             {
@@ -59,11 +59,7 @@ namespace FoodTruckApp
                 });
             }
 
-
-
         }
-
-
 
         private async void OnGoToClicked(object sender, EventArgs e)
         {
@@ -77,22 +73,23 @@ namespace FoodTruckApp
             //var zoomLevel = SliderZoom.Value; // between 1 and 18
             //var latlongdegrees = 360 / (Math.Pow(2, zoomLevel));
             //MyMap.MoveToRegion(new MapSpan(item, latlongdegrees, latlongdegrees));
-            try
-            {
-                Navigation.PushAsync(new LogInPage());
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-            }
+            //try
+            //{
+            //    Navigation.PushAsync(new LogInPage());
+            //}
+            //catch (Exception ex)
+            //{
+            //    System.Diagnostics.Debug.WriteLine(ex.Message);
+            ////}
             //FoodTruck[] list;
             //JToken request;
             //try
             //{
 
-            //    FoodTruck test = new FoodTruck() { Name = "testName4", Description = "testDescription4", Latitude = -16.23, Longitude = 42 };
+            //    FoodTruck test = new FoodTruck() { Name = "testName8", Description = "testDescription8", Latitude = -16.23, Longitude = 42 };
             //    //await FoodTruckManager.DefaultManager.todoTable.InsertAsync(new FoodTruck { Name = "test", Description = "test" });
-            //     request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync<FoodTruck,JToken>("FoodTrucks",test,HttpMethod.Post,   null);
+            //    //request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync<FoodTruck, JToken>("FoodTrucks", test, HttpMethod.Post, null);
+            //    request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync("FoodTrucks", HttpMethod.Get,parameters: null);
             //    list = request.ToObject<FoodTruck[]>();
             //    var listPins = list.Select<FoodTruck, CustomPin>(f => new CustomPin
             //    {
@@ -116,7 +113,6 @@ namespace FoodTruckApp
             //}
             //System.Diagnostics.Debug.WriteLine("");
 
-            
         }
 
         private void OnSliderChanged(object sender, ValueChangedEventArgs e)
@@ -126,26 +122,5 @@ namespace FoodTruckApp
             MyMap.MoveToRegion(new MapSpan(MyMap.VisibleRegion.Center, latlongdegrees, latlongdegrees));
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            var pin = new CustomPin
-            {
-                Pin = new Pin
-                {
-                    Type = PinType.Place,
-                    Position = new Position(37.79752, -122.40183),
-                    Label = "Xamarin San Francisco Office",
-                    Address = "394 Pacific Ave, San Francisco CA"
-                },
-                Id = "Xamarin",
-                Url = "http://xamarin.com/about/"
-            };
-
-            MyMap.CustomPins = new List<CustomPin> { pin };
-            MyMap.Pins.Add(pin.Pin);
-            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37.79752, -122.40183), Distance.FromMiles(1.0)));
-
-
-        }
     }
 }

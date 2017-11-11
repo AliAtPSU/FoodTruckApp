@@ -24,8 +24,7 @@
             x:Name="MyMap"
             IsShowingUser="true"
             MapType="Hybrid"/>
-        <Picker
-            o
+
         <Entry Placeholder="Enter location"
             x:Name="EntryLocation"
             Margin="10"/>
