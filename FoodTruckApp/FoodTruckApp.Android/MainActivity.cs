@@ -18,7 +18,7 @@ using Newtonsoft.Json;
 namespace FoodTruckApp.Droid
 {
     [Activity(Label = "FoodTruckApp", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, IAuthenticate
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
 
         protected override void OnCreate(Bundle bundle)
@@ -35,8 +35,9 @@ namespace FoodTruckApp.Droid
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
 
-            App.Init((IAuthenticate)this);
+            App.Init();
             LoadApplication(new App());
+            FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(this,MobileServiceAuthenticationProvider.Twitter,"");
         }
 
        

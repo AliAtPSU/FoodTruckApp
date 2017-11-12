@@ -32,18 +32,18 @@ namespace FoodTruckApp.Droid
                 {
 
                     // The authentication provider could also be Facebook, Twitter, or Microsoft
-                    user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(this, MobileServiceAuthenticationProvider.Twitter, "foodtruck");
+                    user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(MobileServiceAuthenticationProvider.Twitter, "foodtruck");
 
                     if (user != null)
                     {
-                        CreateAndShowDialog(string.Format("You are now logged in - {0}", user.UserId), "Logged in!");
+                 //       CreateAndShowDialog(string.Format("You are now logged in - {0}", user.UserId), "Logged in!");
                     }
                 }
                 success = true;
             }
             catch (Exception ex)
             {
-                CreateAndShowDialog(ex.Message, "Authentication failed");
+               // CreateAndShowDialog(ex.Message, "Authentication failed");
             }
             return success;
         }
@@ -55,29 +55,20 @@ namespace FoodTruckApp.Droid
             {
                 if (user != null)
                 {
-                    CookieManager.Instance.RemoveAllCookie();
+                    
                     await FoodTruckManager.DefaultManager.CurrentClient.LogoutAsync();
-                    CreateAndShowDialog(string.Format("You are now logged out - {0}", user.UserId), "Logged out!");
+                  //  CreateAndShowDialog(string.Format("You are now logged out - {0}", user.UserId), "Logged out!");
                 }
                 user = null;
                 success = true;
             }
             catch (Exception ex)
             {
-                CreateAndShowDialog(ex.Message, "Logout failed");
+                //CreateAndShowDialog(ex.Message, "Logout failed");
             }
 
             return success;
         }
-        void CreateAndShowDialog(string message, string title)
-        {
-            var builder = new AlertDialog.Builder(this);
-            builder.SetMessage(message);
-            builder.SetTitle(title);
-            builder.SetNeutralButton("OK", (sender, args) =>
-            {
-            });
-            builder.Create().Show();
-        }
+
     }
 }

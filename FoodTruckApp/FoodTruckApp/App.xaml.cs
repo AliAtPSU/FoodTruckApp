@@ -11,7 +11,7 @@ namespace FoodTruckApp
 {
     public partial class App : Application
     {
-        public static IAuthenticate Authenticator { get; private set; }
+        public static Authenticator Authenticator { get; private set; }
 
         public App()
         {
@@ -25,9 +25,9 @@ namespace FoodTruckApp
             // Handle when your app starts
         }
 
-        public static void Init(IAuthenticate authenticator)
+        public static void Init()
         {
-            Authenticator = authenticator;
+            Authenticator = new Authenticator();
         }
 
         protected override void OnSleep()
