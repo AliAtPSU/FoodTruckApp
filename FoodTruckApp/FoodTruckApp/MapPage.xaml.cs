@@ -20,10 +20,15 @@ namespace FoodTruckApp
     public partial class MapPage : ContentPage
     {
         Geocoder geoCoder;
+        public static ToolbarItem accountPageOpen = new ToolbarItem()
+        {
+            Text = "account"
+        };
         public MapPage()
         {
-
+           
             InitializeComponent();
+            this.ToolbarItems.Add(accountPageOpen);
             geoCoder = new Geocoder();
             FoodTruck foodTruckToDisplay = new FoodTruck() { Name = "test display", Description = "this is just a text description for food truck to be displayed in a display page." };
             var pin = new CustomPin(foodTruckToDisplay)
@@ -38,7 +43,7 @@ namespace FoodTruckApp
                 Id = "Xamarin",
                 Url = "http://xamarin.com/about/"
             };
-
+            
             MyMap.CustomPins = new List<CustomPin> { pin };
             MyMap.Pins.Add(pin.Pin);
             MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37.79752, -122.40183), Distance.FromMiles(1.0)));
@@ -81,37 +86,32 @@ namespace FoodTruckApp
             //{
             //    System.Diagnostics.Debug.WriteLine(ex.Message);
             ////}
-            //FoodTruck[] list;
-            //JToken request;
-            //try
-            //{
+            FoodTruck[] list;
+            JToken request;
+            try
+            {
 
-            //    FoodTruck test = new FoodTruck() { Name = "testName8", Description = "testDescription8", Latitude = -16.23, Longitude = 42 };
-            //    //await FoodTruckManager.DefaultManager.todoTable.InsertAsync(new FoodTruck { Name = "test", Description = "test" });
-            //    //request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync<FoodTruck, JToken>("FoodTrucks", test, HttpMethod.Post, null);
-            //    request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync("FoodTrucks", HttpMethod.Get,parameters: null);
-            //    list = request.ToObject<FoodTruck[]>();
-            //    var listPins = list.Select<FoodTruck, CustomPin>(f => new CustomPin
-            //    {
-            //        Pin = new Pin
-            //        {
-            //            Label = f.Name,
-            //            Position = new Position(f.Latitude, f.Longitude),
+                FoodTruck test = new FoodTruck() { Name = "testName8", Description = "testDescription8", Latitude = -16.23, Longitude = 42 };
+                //await FoodTruckManager.DefaultManager.todoTable.InsertAsync(new FoodTruck { Name = "test", Description = "test" });
+                //request = await FoodTruckManager.DefaultManager.CurrentClient.InvokeApiAsync<FoodTruck, JToken>("FoodTrucks", test, HttpMethod.Post, null);
+                request = await Authenticator.client.InvokeApiAsync("FoodTrucks", HttpMethod.Get, parameters: null);
+                list = request.ToObject<FoodTruck[]>();
+                var listPins = list.Select<FoodTruck, CustomPin>(f => new CustomPin
+                (
+                    new FoodTruck() { Description = f.Description,Name=f.Name,Latitude=f.Latitude,Longitude =f.Longitude,IsAvailable=f.IsAvailable}
+                 
+                ));
+                foreach (var pin in listPins)
+                {
+                    MyMap.CustomPins.Add(pin);
+                    MyMap.Pins.Add(pin.Pin);
+                }
+            }
+            catch (Exception ex)
+            {
+            System.Diagnostics.Debug.WriteLine("");
+            }
 
-
-            //        }
-            //    });
-            //    foreach (var pin in listPins)
-            //    {
-            //        MyMap.CustomPins.Add(pin);
-            //        MyMap.Pins.Add(pin.Pin);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
-            //System.Diagnostics.Debug.WriteLine("");
 
         }
 

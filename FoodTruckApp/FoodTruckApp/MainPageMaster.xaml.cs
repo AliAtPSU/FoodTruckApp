@@ -16,7 +16,7 @@ namespace FoodTruckApp
     public partial class MainPageMaster : ContentPage
     {
         public ListView ListView;
-
+        
         public MainPageMaster()
         {
             InitializeComponent();

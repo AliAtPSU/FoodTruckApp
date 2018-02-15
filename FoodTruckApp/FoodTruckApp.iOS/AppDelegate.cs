@@ -33,6 +33,10 @@ namespace FoodTruckApp.iOS
             return base.FinishedLaunching(app, options);
         }
 
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            return FoodTruckManager.DefaultManager.CurrentClient.ResumeWithURL(url);
+        }
 
     }
 }

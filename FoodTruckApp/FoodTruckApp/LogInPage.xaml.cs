@@ -27,7 +27,7 @@ namespace FoodTruckApp
 
                 if (App.Authenticator != null)
                 {
-                    authenticated = await App.Authenticator.AuthenticateAsync();
+                    authenticated = await App.Authenticator.Authenticate();
                 }
 
                 if (authenticated)
@@ -43,7 +43,7 @@ namespace FoodTruckApp
                     messageLabel.Text = "Authentication cancelled by the user";
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 messageLabel.Text = "Authentication failed";
             }

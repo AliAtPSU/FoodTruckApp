@@ -35,9 +35,9 @@ namespace FoodTruckApp.Droid
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
 
-            App.Init();
+            App.Init(new AuthenticatorAndroid(this));
             LoadApplication(new App());
-            FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(this,MobileServiceAuthenticationProvider.Twitter,"");
+            //FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(this,MobileServiceAuthenticationProvider.Twitter,"");
         }
 
        
