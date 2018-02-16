@@ -16,6 +16,7 @@
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="messageLabel" />
             </StackLayout>
+            <Button Text="login" Clicked="OnLoginButtonClicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace FoodTruckApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MasterDetailPageDetail : ContentPage
+    public partial class MainPageDetail : ContentPage
     {
-        public MasterDetailPageDetail()
+        public MainPageDetail()
         {
             InitializeComponent();
         }

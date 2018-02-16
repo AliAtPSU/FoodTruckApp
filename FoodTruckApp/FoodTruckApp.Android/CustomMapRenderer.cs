@@ -125,10 +125,11 @@ namespace FoodTruckApp.Droid
 
             if (!string.IsNullOrWhiteSpace(customPin.Url))
             {
-                var url = Android.Net.Uri.Parse(customPin.Url);
-                var intent = new Intent(Intent.ActionView, url);
-                intent.AddFlags(ActivityFlags.NewTask);
-                Android.App.Application.Context.StartActivity(intent);
+                Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new DetailPage(customPin));
+                //var url = Android.Net.Uri.Parse(customPin.Url);
+                //var intent = new Intent(Intent.ActionView, url);
+                //intent.AddFlags(ActivityFlags.NewTask);
+                //Android.App.Application.Context.StartActivity(intent);
             }
         }
 

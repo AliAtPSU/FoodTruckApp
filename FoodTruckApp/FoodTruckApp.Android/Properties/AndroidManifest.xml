@@ -14,6 +14,15 @@
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     <activity android:name="com.google.android.gms.ads.AdActivity" 
               android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+    <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity"
+          android:launchMode="singleTop" android:noHistory="true">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="foodtruck" android:host="easyauth.callback" />
+      </intent-filter>
+    </activity>
   </application>
 
 </manifest>
