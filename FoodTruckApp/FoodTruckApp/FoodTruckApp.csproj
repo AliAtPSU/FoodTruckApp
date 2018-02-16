@@ -45,9 +45,6 @@
     </Compile>
     <Compile Include="FoodTruck.cs" />
     <Compile Include="FoodTruckRegisterModel.cs" />
-    <Compile Include="MapPage.xaml.cs">
-      <DependentUpon>MapPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="FoodTruckManager.cs" />
     <Compile Include="IAuthenticate.cs" />
@@ -61,6 +58,9 @@
       <DependentUpon>LogInPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPageMenuItem.cs" />
+    <Compile Include="MapPage.xaml.cs">
+      <DependentUpon>MapPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TruckDetailsPage.xaml.cs">
       <DependentUpon>TruckDetailsPage.xaml</DependentUpon>
@@ -70,12 +70,6 @@
     <EmbeddedResource Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="MapPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +140,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
