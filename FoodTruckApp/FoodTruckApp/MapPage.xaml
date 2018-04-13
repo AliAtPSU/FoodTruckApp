@@ -7,6 +7,9 @@
              Title="MapPage"
              xmlns:Ad="clr-namespace:Ads;assembly=FoodTruckApp"
              >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="logIn" Text="log in" Order="Primary"/>
+    </ContentPage.ToolbarItems>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

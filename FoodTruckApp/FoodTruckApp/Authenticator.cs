@@ -6,22 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Auth;
+using Xamarin.Forms;
 
 namespace FoodTruckApp
 {
 
-    public class Authenticator 
+    public abstract class Authenticator
     {
-        
+
         public AccountStore AccountStore { get; private set; }
 
-        MobileServiceUser user;
+        public static MobileServiceClient client = new MobileServiceClient(Constants.ApplicationURL);
 
 
         public Authenticator()
         {
             AccountStore = AccountStore.Create();
         }
+
 
         public async Task autoLoginAsync()
         {
@@ -36,8 +38,9 @@ namespace FoodTruckApp
                     {
                         if (!IsTokenExpired(token))
                         {
-                            FoodTruckManager.DefaultManager.CurrentClient.CurrentUser = new MobileServiceUser(acct.Username);
-                            FoodTruckManager.DefaultManager.CurrentClient.CurrentUser.MobileServiceAuthenticationToken = token;
+
+                            client.CurrentUser = new MobileServiceUser(acct.Username);
+                            client.CurrentUser.MobileServiceAuthenticationToken = token;
                             return;
                         }
                     }
@@ -45,34 +48,34 @@ namespace FoodTruckApp
             }
         }
 
-        public async Task<bool> AuthenticateAsync()
+        public async Task<bool> Authenticate()
         {
             bool success = false;
             try
-            {
-                if (user == null)
-                {
-                    var token = new JObject();
-                    // The authentication provider could also be Facebook, Twitter, or Microsoft
-                    user = await FoodTruckManager.DefaultManager.CurrentClient.LoginAsync(MobileServiceAuthenticationProvider.Twitter, "foodtruck");
+            {          
+                    //JObject token = new JObject(new JProperty("access_token", "278461506-XDgzX5KzRlEMrdrkB7piFPSG22GQGwQV0LznOoUn"),
+                    //    new JProperty("access_token_secret", "f7ywdoNIuWXWnRMFP6WpNPlD2Gzw5RWYmrXZAkWDC3feg"));
 
-                    if (user != null)
+                    //client.CurrentUser = await client.LoginAsync(MobileServiceAuthenticationProvider.Twitter, token);
+
+                    // The authentication provider could also be Facebook, Twitter, or Microsoft
+                    await AuthenticatePlatformSpecific();
+
+                    if (client.CurrentUser != null)
                     {
                         //       CreateAndShowDialog(string.Format("You are now logged in - {0}", user.UserId), "Logged in!");
                     }
-                }
-                success = true;
-                var account = new Account(FoodTruckManager.DefaultManager.CurrentClient.CurrentUser.UserId);
-                account.Properties.Add("token", FoodTruckManager.DefaultManager.CurrentClient.CurrentUser.MobileServiceAuthenticationToken);
-                AccountStore.Save(account, "tasklist");
-
                 
+                success = true;
+            }catch(Exception ex){
+                createAndShowDialog( ex.Message);
             }
-            catch (Exception ex)
-            {
-                // CreateAndShowDialog(ex.Message, "Authentication failed");
-            }
+            var account = new Account(client.CurrentUser.UserId);
+            account.Properties.Add("token",client.CurrentUser.MobileServiceAuthenticationToken);
+            AccountStore.Save(account, "tasklist");
+
             return success;
+
         }
 
         public async Task<bool> LogoutAsync()
@@ -80,13 +83,13 @@ namespace FoodTruckApp
             bool success = false;
             try
             {
-                if (user != null)
+                if (client != null)
                 {
 
                     await FoodTruckManager.DefaultManager.CurrentClient.LogoutAsync();
                     //  CreateAndShowDialog(string.Format("You are now logged out - {0}", user.UserId), "Logged out!");
                 }
-                user = null;
+                client = null;
                 var accountsToDelete = AccountStore.FindAccountsForService("tasklist");
                 foreach (var account in accountsToDelete)
                 {
@@ -133,6 +136,21 @@ namespace FoodTruckApp
             var expire = minTime.AddSeconds(exp);
             return (expire < DateTime.UtcNow);
         }
+
+        void createAndShowDialog(string message)
+        {
+
+        }
+        private void GetImageBitmapFromUrl(string url)
+        {
+            var webImage = new UriImageSource { Uri = new Uri(url) };
+            FileImageSourceConverter f = new FileImageSourceConverter();
+            
+            MapPage.accountPageOpen.Icon=new FileImageSource() { };
+        }
+
+
+        public abstract Task AuthenticatePlatformSpecific();
 
     }
 
