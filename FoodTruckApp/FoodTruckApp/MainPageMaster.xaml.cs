@@ -23,6 +23,7 @@ namespace FoodTruckApp
 
             BindingContext = new MainPageMasterViewModel();
             ListView = MenuItemsListView;
+            label.Text = Resource.AppName;
         }
 
         class MainPageMasterViewModel : INotifyPropertyChanged
@@ -33,8 +34,8 @@ namespace FoodTruckApp
             {
                 MenuItems = new ObservableCollection<MainPageMenuItem>(new[]
                 {
-                    new MainPageMenuItem { Id = 0, Title = "Map", TargetType=typeof(MapPage) },
-                    new MainPageMenuItem {Id = 1, Title="LogIn", TargetType=typeof(LogInPage) }
+                    new MainPageMenuItem { Id = 0, Title = Resource.Map , TargetType=typeof(MapPage) },
+                    new MainPageMenuItem {Id = 1, Title= Resource.LogIn, TargetType=typeof(LogInPage) }
                     
                 });
 

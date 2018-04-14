@@ -9,7 +9,7 @@
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}">
       <ListView.Header>
-        <Grid BackgroundColor="#03A9F4">
+        <Grid  BackgroundColor="#03A9F4">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
@@ -21,10 +21,10 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
           </Grid.RowDefinitions>
-          <Label
+          <Label x:Name="label"
               Grid.Column="1"
               Grid.Row="2"
-              Text="AppName"
+              
               Style="{DynamicResource SubtitleStyle}"/>
         </Grid>
       </ListView.Header>
