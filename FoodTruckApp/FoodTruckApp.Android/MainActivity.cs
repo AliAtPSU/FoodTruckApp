@@ -6,8 +6,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using HockeyApp.Android;
-using HockeyApp.Android.Metrics;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
 using Android.Webkit;
@@ -27,8 +25,6 @@ namespace FoodTruckApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-            CrashManager.Register(this, "be569339f5274c84a0064669d61abd17");
-            MetricsManager.Register(Application, "be569339f5274c84a0064669d61abd17");
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
 
