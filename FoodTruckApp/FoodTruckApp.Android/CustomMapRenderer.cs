@@ -51,7 +51,8 @@ namespace FoodTruckApp.Droid
         }
         protected override void OnMapReady(GoogleMap googleMap)
         {
-            InvokeOnMapReadyBaseClassHack(googleMap);
+            base.OnMapReady(googleMap);
+            //InvokeOnMapReadyBaseClassHack(googleMap);
             map = googleMap;
             map.InfoWindowClick += OnInfoWindowClick;
             map.SetInfoWindowAdapter(this);
