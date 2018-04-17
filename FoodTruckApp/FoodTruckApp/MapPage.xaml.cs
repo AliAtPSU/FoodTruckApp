@@ -26,8 +26,9 @@ namespace FoodTruckApp
         };
         public MapPage()
         {
-           
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
+            
             this.ToolbarItems.Add(accountPageOpen);
             geoCoder = new Geocoder();
             FoodTruck foodTruckToDisplay = new FoodTruck() { Name = "test display", Description = "this is just a text description for food truck to be displayed in a display page." };
