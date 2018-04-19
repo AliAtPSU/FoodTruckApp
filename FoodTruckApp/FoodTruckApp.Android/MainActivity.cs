@@ -28,7 +28,6 @@ namespace FoodTruckApp.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
 
-            Window.AddFlags(WindowManagerFlags.TranslucentNavigation);
             Window.AddFlags(WindowManagerFlags.TranslucentStatus);
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
