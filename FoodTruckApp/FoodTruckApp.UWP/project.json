@@ -4,10 +4,10 @@
     "Microsoft.Bcl": "1.1.10",
     "Microsoft.Bcl.Build": "1.0.21",
     "Microsoft.Net.Http": "2.2.29",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.8",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "6.1.4",
     "System.Net.Http": "4.3.3",
-    "Xamarin.Forms": "2.5.1.444934",
-    "Xamarin.Forms.Maps": "2.5.1.444934"
+    "Xamarin.Forms": "3.0.0.482510",
+    "Xamarin.Forms.Maps": "3.0.0.482510"
   },
   "frameworks": {
     "uap10.0.10586": {}
