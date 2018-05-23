@@ -28,6 +28,11 @@ namespace FoodTruckApp.Droid
         List<CustomPin> customPins;
         //bool isDrawn;
 
+            public CustomMapRenderer(Context context): base(context)
+        {
+            
+        }
+
         protected override void OnElementChanged(ElementChangedEventArgs<Map> e)
         {
             base.OnElementChanged(e);
@@ -44,9 +49,10 @@ namespace FoodTruckApp.Droid
                 ((MapView)Control).GetMapAsync(this);
             }
         }
-        public void OnMapReady(GoogleMap googleMap)
+        protected override void OnMapReady(GoogleMap googleMap)
         {
-            InvokeOnMapReadyBaseClassHack(googleMap);
+            base.OnMapReady(googleMap);
+            //InvokeOnMapReadyBaseClassHack(googleMap);
             map = googleMap;
             map.InfoWindowClick += OnInfoWindowClick;
             map.SetInfoWindowAdapter(this);
