@@ -10,5 +10,6 @@ namespace FoodTruckApp
         public static string ApplicationURL = @"https://foodtruckali.azurewebsites.net";
         public static string cosmosdbKey = "";
 
+
     }
 }

@@ -153,9 +153,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FoodTruckApp\FoodTruckApp.csproj">
-      <Project>{44c7c6ad-0607-4c12-8e6d-1a4ac310e4eb}</Project>
-      <Name>FoodTruckApp</Name>
+    <ProjectReference Include="..\..\FoodTruckApp %28Standard%29\FoodTruckApp %28Standard%29.csproj">
+      <Project>{b0ffb703-59b6-47ab-8f49-b1f0dbeb763b}</Project>
+      <Name>FoodTruckApp %28Standard%29</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
